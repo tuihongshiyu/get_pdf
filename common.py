@@ -7,7 +7,7 @@ def get_urls(url):
     soup = str(BeautifulSoup(page.text, 'lxml'))
     # print(soup)
     pat = re.compile(r'(?<=href=\")(.+?)\.pdf')  # 匹配地址
-    pdf_url = pat.findall(soup)
+    pdf_url = list(set(pat.findall(soup)))
     return pdf_url
 
 def download_pdf(urls):
